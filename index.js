@@ -87,7 +87,27 @@ client.on(Events.MessageCreate, async message => {
         }
     }
 
+    if (message.channel.id === rulesEmbedSender && message.content.includes('!sendrules')) {
+        const rulesEmbed = new MessageEmbed()
+            .setTitle("Server Rules")
+            .setDescription("The Rules of Mystic Lounge")
+            .addField("#1 - No inappropriate, sexually explicit or offensive nicknames, profile pictures and activities.")
+            .addField("#2 - Moderators reserve the right to change inappropriate nicknames.")
+            .addField("#3 - Moderators reserve the right to use their own discretion regardless of any rule.")
+            .addField("#4 - Do not invite bots related to bugs, exploits, glitches, hacks, etc.")
+            .addField('#5 - No pornographic or NSFW content.')
+            .addField('#6 - ')
+            .setColor('#000000')
+
+            message.channel.send({ embeds: [rulesEmbed] })
+            .then(() => {
+                console.log(`Embed sent in rules channel.`);
+            })
+            .catch(error => console.error('Error sending embed:', error));
+    }
 });
+
+client.on(Events)
 
 
 client.login(token);
