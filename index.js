@@ -4,7 +4,7 @@ const { token, welcomeChannelId, generalChatId, musicPlaylistsChannelId, eightee
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
 client.once(Events.ClientReady, readyClient => {
-    console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+    console.log(`Logged in as ${readyClient.user.tag}`);
     
     readyClient.user.setPresence({
         activities: [{ 
@@ -72,7 +72,6 @@ client.on(Events.MessageCreate, async message => {
     if (message.channel.id === introChannelId) {
         try {
             await message.react('❤️');
-            await message.react('🔥');
         } catch (error) {
             console.error('Failed to react:', error);
         }
